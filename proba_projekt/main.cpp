@@ -5,6 +5,7 @@ using namespace std;
 
  //double& operator[](int)
 
+//kosz b+
 
 int main() {
     Tomb t(30);
