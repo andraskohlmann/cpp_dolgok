@@ -27,6 +27,8 @@ public:
 
         delete[] items;
         items = temporary;
+
+      return;
     }
 
     double& operator[](const int index) {
@@ -34,9 +36,20 @@ public:
         double& item_ref=items[index];
       return item_ref;
     }
+/*
+    Tomb& operator= (const Tomb& src)   {
+        this->atmeretez(sizeof(src.items));
 
+        for (unsigned int i = 0; i < sizeof (src.items); ++i)
+            this->items[i] = src.items[i];
+
+        return *this;
+    }
+*/
     /* Amugy mukszik az alapertelmezett copy constructor is */
     Tomb (const Tomb& t): items (t.items) {}
+
+    ~Tomb() {delete[] items;}
 
  };
 
@@ -55,4 +68,5 @@ int main() {
     std::cout << masolat[30] << "\n";
 
 //    harmadik = t; // operator=
+//    std::cout << harmadik[70] << "\n";
 }
