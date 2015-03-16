@@ -4,9 +4,8 @@ using namespace std;
 
  class Tomb {
     double *items;
-    int std_size;
 public:
-    Tomb() {std_size = 40; items = new double[std_size];/* We like to be undefined */}
+    Tomb() {items = new double[40];/* We like to be undefined */}
 
     Tomb (int _size) {
         items = new double[_size];
@@ -15,11 +14,11 @@ public:
             items [i] = (double)i;
     }
 
-    void atmeretez (int _new_size) {
+    void atmeretez (unsigned int _new_size) {
         double *temporary = new double[_new_size];
-        int i = -1;
+        unsigned int i = 0;
 
-        while (++i < _new_size){
+        while (i++ < _new_size){
             if ( i < sizeof (items) )
               temporary [i]= items[i];
             else
@@ -35,14 +34,25 @@ public:
         double& item_ref=items[index];
       return item_ref;
     }
+
+    /* Amugy mukszik az alapertelmezett copy constructor is */
+    Tomb (const Tomb& t): items (t.items) {}
+
  };
 
 int main() {
     Tomb t(30);
     std::cout << t[20] << "\n"; //index op.
+
     t[22] = 10.2; // referenciával tér vissza az index [] oerátor
+
     t.atmeretez(50); // dinamikus átméretezés
-    std::cout << t[30] << "\n"; //index op.
+
+    std::cout << t[30] << "\n";
+
     Tomb masolat(t), harmadik; //copy constructor
+
+    std::cout << masolat[30] << "\n";
+
 //    harmadik = t; // operator=
 }
