@@ -14,7 +14,7 @@ movePiece miscLayout []= {
 
 Field* Board::rowOfEmtpy (void) {
     Field* ret = new Field[8];
-    return ret;
+return ret;
 }
 
 Field* Board::rowOfMisc (bool team1) {
@@ -27,7 +27,8 @@ Field* Board::rowOfMisc (bool team1) {
     {
         ret[i] = new Piece (miscLayout[i],team1);
     }
-    return ret;
+
+return ret;
 }
 
 Field* Board::rowOfPawns (bool team1) {
@@ -40,6 +41,7 @@ Field* Board::rowOfPawns (bool team1) {
     {
         ret[i] = new Piece (movePawn,team1);
     }
-    return ret;
+
+return ret;
 }
 
